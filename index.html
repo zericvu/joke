@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой персональный блог</title>
+    <title>Мой блог - Публичная страница</title>
     <style>
-        /* Стили остаются прежними */
         * {
             margin: 0;
             padding: 0;
@@ -34,36 +33,6 @@
             margin-bottom: 2rem;
         }
         
-        .admin-panel {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            display: none; /* Скрыто по умолчанию */
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-        
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
         .post {
             background: white;
             padding: 1.5rem;
@@ -72,13 +41,31 @@
             margin-bottom: 1.5rem;
         }
         
-        .login-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .post h2 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-image {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .admin-link {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .admin-link a {
+            color: #667eea;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -86,80 +73,27 @@
     <div class="container">
         <header>
             <h1>Блог Администратора</h1>
-            <p>Только администратор может добавлять посты</p>
+            <p>Публичная страница с постами</p>
         </header>
 
-        <!-- Форма входа для администратора -->
-        <div id="loginForm" class="login-form">
-            <h2>Вход для администратора</h2>
-            <div class="form-group">
-                <input type="password" id="adminPassword" placeholder="Введите пароль администратора">
-            </div>
-            <button onclick="checkAdmin()">Войти</button>
-            <p id="loginMessage" style="color: red; margin-top: 10px;"></p>
-        </div>
-
-        <!-- Панель администратора (скрыта до входа) -->
-        <div id="adminPanel" class="admin-panel">
-            <h2>Добавить новый пост</h2>
-            <form id="postForm">
-                <div class="form-group">
-                    <input type="text" id="postTitle" placeholder="Заголовок поста" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="postContent" placeholder="Текст поста" rows="5" required></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="postImage" placeholder="URL изображения (необязательно)">
-                </div>
-                <button type="submit">Опубликовать пост</button>
-            </form>
-            <button onclick="logout()" style="background: #ff4757; margin-top: 10px;">Выйти</button>
-        </div>
-
-        <!-- Отображение постов -->
         <div id="postsContainer">
             <!-- Посты загружаются здесь -->
+            <div class="post">
+                <h2>Пример поста</h2>
+                <div class="post-date">1 января 2023</div>
+                <div>Это пример поста. Реальные посты загружаются с административной панели.</div>
+            </div>
+        </div>
+        
+        <div class="admin-link">
+            <a href="admin.html">Перейти в административную панель</a>
         </div>
     </div>
 
     <script>
-        // Конфигурация
-        const ADMIN_PASSWORD = "ZalkoeZrelise6"; // Пароль администратора
-        const GITHUB_USERNAME = "zericvu"; // Ваш username на GitHub
-        const GITHUB_REPO = "joke_add"; // Название репозитория
-        const GITHUB_TOKEN = "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"; // Personal access token
-
-        // Проверка прав администратора
-        function checkAdmin() {
-            const password = document.getElementById('adminPassword').value;
-            if (password === ADMIN_PASSWORD) {
-                localStorage.setItem('isAdmin', 'true');
-                showAdminPanel();
-            } else {
-                document.getElementById('loginMessage').textContent = 'Неверный пароль';
-            }
-        }
-
-        // Показ панели администратора
-        function showAdminPanel() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-        }
-
-        // Выход из режима администратора
-        function logout() {
-            localStorage.removeItem('isAdmin');
-            document.getElementById('loginForm').style.display = 'block';
-            document.getElementById('adminPanel').style.display = 'none';
-            document.getElementById('adminPassword').value = '';
-        }
-
-        // Загрузка постов из GitHub
-        async function loadPosts() {
+        // Загрузка постов из localStorage
+        function loadPosts() {
             try {
-                // В реальной реализации здесь будет запрос к GitHub API
-                // Для демонстрации используем localStorage
                 const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
                 displayPosts(posts);
             } catch (error) {
@@ -178,51 +112,15 @@
             container.innerHTML = posts.map(post => `
                 <div class="post">
                     <h2>${post.title}</h2>
-                    <p>${post.date}</p>
+                    <div class="post-date">${post.date}</div>
                     <div>${post.content}</div>
-                    ${post.image ? `<img src="${post.image}" style="max-width: 100%; margin-top: 10px;">` : ''}
+                    ${post.image ? `<img src="${post.image}" class="post-image">` : ''}
                 </div>
             `).join('');
         }
 
-        // Добавление нового поста
-        document.getElementById('postForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!localStorage.getItem('isAdmin')) {
-                alert('Только администратор может добавлять посты');
-                return;
-            }
-
-            const newPost = {
-                title: document.getElementById('postTitle').value,
-                content: document.getElementById('postContent').value,
-                image: document.getElementById('postImage').value,
-                date: new Date().toLocaleDateString('ru-RU')
-            };
-
-            try {
-                // В реальной реализации здесь будет запрос к GitHub API
-                const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-                posts.unshift(newPost);
-                localStorage.setItem('blogPosts', JSON.stringify(posts));
-                
-                displayPosts(posts);
-                document.getElementById('postForm').reset();
-                alert('Пост опубликован!');
-            } catch (error) {
-                console.error('Ошибка публикации:', error);
-                alert('Ошибка при публикации поста');
-            }
-        });
-
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем, вошел ли пользователь как администратор
-            if (localStorage.getItem('isAdmin')) {
-                showAdminPanel();
-            }
-            
             loadPosts();
         });
     </script>
