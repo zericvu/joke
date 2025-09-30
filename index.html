@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой блог 2000-х</title>
+    <style>
+        /* Общие стили в духе 2000-х */
+        body {
+            background-color: #000066;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAE0lEQVQYV2NkYGD4z4AEAAAQAQIeUw1yAAAAAElFTkSuQmCC');
+            font-family: Arial, sans-serif;
+            color: #00FF00;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            background-color: #0000CC;
+            border: 3px solid #FFFF00;
+            padding: 10px;
+        }
+        
+        /* Шапка в стиле 2000-х */
+        .header {
+            background: linear-gradient(to right, #FF00FF, #00FFFF);
+            padding: 10px;
+            text-align: center;
+            border: 2px dashed #FFFFFF;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 0 #000000;
+            margin: 0;
+            font-family: "Comic Sans MS", cursive;
+        }
+        
+        .header p {
+            font-size: 14px;
+            color: #FFFFFF;
+            margin: 5px 0 0 0;
+        }
+        
+        /* Навигация */
+        .navbar {
+            background-color: #FF9900;
+            padding: 5px;
+            margin: 10px 0;
+            text-align: center;
+            border: 2px solid #FFFFFF;
+        }
+        
+        .navbar a {
+            color: #0000FF;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+        
+        .navbar a:hover {
+            color: #FF0000;
+            text-decoration: underline;
+        }
+        
+        /* Основное содержимое */
+        .main-content {
+            background-color: #FFFFFF;
+            padding: 15px;
+            border: 2px solid #FF00FF;
+            color: #000000;
+        }
+        
+        /* Форма добавления поста */
+        .post-form {
+            background-color: #CCCCFF;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px dotted #0000FF;
+        }
+        
+        .post-form h2 {
+            color: #FF00FF;
+            font-size: 20px;
+            margin-top: 0;
+            font-family: "Comic Sans MS", cursive;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #0000FF;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 5px;
+            border: 2px solid #FF00FF;
+            background-color: #FFFFCC;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+        }
+        
+        .btn {
+            background-color: #00FF00;
+            color: #000000;
+            border: 2px solid #000000;
+            padding: 8px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: "Comic Sans MS", cursive;
+        }
+        
+        .btn:hover {
+            background-color: #FFFF00;
+        }
+        
+        /* Посты */
+        .post {
+            background-color: #FFFFCC;
+            border: 2px solid #FF9900;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .post-title {
+            color: #FF00FF;
+            font-size: 18px;
+            margin-top: 0;
+            font-family: "Comic Sans MS", cursive;
+        }
+        
+        .post-content {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        
+        .post-image {
+            max-width: 100%;
+            border: 2px solid #0000FF;
+            margin: 10px 0;
+        }
+        
+        .post-date {
+            color: #666666;
+            font-size: 12px;
+            text-align: right;
+        }
+        
+        .delete-btn {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        
+        /* Боковая панель */
+        .sidebar {
+            background-color: #CCFFCC;
+            border: 2px solid #00FF00;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .sidebar h3 {
+            color: #FF00FF;
+            font-size: 16px;
+            margin-top: 0;
+            font-family: "Comic Sans MS", cursive;
+        }
+        
+        .sidebar ul {
+            padding-left: 20px;
+            color: #0000FF;
+        }
+        
+        /* Футер */
+        .footer {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #FFFF00;
+        }
+        
+        .counter {
+            font-family: "Courier New", monospace;
+            color: #00FF00;
+            background-color: #000000;
+            padding: 2px 5px;
+            border: 1px solid #00FF00;
+        }
+        
+        /* Анимированные элементы в стиле 2000-х */
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .marquee {
+            background-color: #FFFF00;
+            color: #FF0000;
+            padding: 5px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        /* Стили для счетчика посещений */
+        .visitor-counter {
+            background-color: #000000;
+            color: #00FF00;
+            padding: 5px;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            margin: 10px 0;
+            border: 1px solid #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <h1>★ Мой Блог 2000-х ★</h1>
+            <p>Добро пожаловать в мой уголок интернета! 👾</p>
+            <div class="visitor-counter">
+                Посетителей: <span id="visitorCount">0</span>
+            </div>
+        </div>
+        
+        <!-- Навигация -->
+        <div class="navbar">
+            <a href="#">Главная</a> | 
+            <a href="#">Фотографии</a> | 
+            <a href="#">Мысли</a> | 
+            <a href="#">Гостевая книга</a> | 
+            <a href="#">Обо мне</a> | 
+            <a href="#">Ссылки</a>
+        </div>
+        
+        <!-- Бегущая строка -->
+        <div class="marquee">
+            <marquee behavior="scroll" direction="left">★ Добро пожаловать в мой блог! Оставляйте комментарии в гостевой книге! ★</marquee>
+        </div>
+        
+        <!-- Основное содержимое -->
+        <div class="main-content">
+            <!-- Форма добавления поста -->
+            <div class="post-form">
+                <h2><span class="blink">✎</span> Добавить новый пост</h2>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label for="postTitle">Заголовок:</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="postText">Текст поста:</label>
+                        <textarea id="postText" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="postImage">Фотография (URL):</label>
+                        <input type="text" id="postImage" placeholder="Введите URL изображения">
+                    </div>
+                    
+                    <button type="submit" class="btn">Опубликовать ✨</button>
+                </form>
+            </div>
+            
+            <!-- Список постов -->
+            <h2 style="color: #FF00FF; font-family: 'Comic Sans MS', cursive;">Мои посты:</h2>
+            <div id="postsContainer">
+                <!-- Посты будут добавляться здесь -->
+            </div>
+            
+            <!-- Боковая панель -->
+            <div class="sidebar">
+                <h3>★ Обо мне ★</h3>
+                <p>Привет! Я создатель этого блога. Здесь я делюсь своими мыслями и фотографиями.</p>
+                
+                <h3>★ Мои интересы ★</h3>
+                <ul>
+                    <li>Фотография</li>
+                    <li>Музыка</li>
+                    <li>Компьютерные игры</li>
+                    <li>Интернет</li>
+                </ul>
+                
+                <h3>★ Сейчас слушаю ★</h3>
+                <p>Linkin Park - In The End</p>
+                
+                <h3>★ Ссылки ★</h3>
+                <ul>
+                    <li><a href="#" style="color: #0000FF;">Моя страница на MySpace</a></li>
+                    <li><a href="#" style="color: #0000FF;">Мой фотоальбом</a></li>
+                    <li><a href="#" style="color: #0000FF;">Гостевая книга</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Футер -->
+        <div class="footer">
+            <p>© 2005 Мой Блог. Все права защищены.</p>
+            <p>Сайт создан в <span id="currentYear">2005</span> году</p>
+            <p>
+                <img src="https://web.archive.org/web/20091027031021/http://geocities.com/photos/glitterfy/button2.gif" alt="Кнопка" width="88" height="31">
+                <img src="https://web.archive.org/web/20091027031021/http://geocities.com/photos/glitterfy/button2.gif" alt="Кнопка" width="88" height="31">
+            </p>
+            <div class="counter">
+                <span id="pageCounter">000001</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Элементы DOM
+        const postForm = document.getElementById('postForm');
+        const postTitle = document.getElementById('postTitle');
+        const postText = document.getElementById('postText');
+        const postImage = document.getElementById('postImage');
+        const postsContainer = document.getElementById('postsContainer');
+        const visitorCount = document.getElementById('visitorCount');
+        const pageCounter = document.getElementById('pageCounter');
+        const currentYear = document.getElementById('currentYear');
+        
+        // Установим текущий год
+        currentYear.textContent = new Date().getFullYear();
+        
+        // Счетчик посещений
+        let visits = localStorage.getItem('blogVisits');
+        if (!visits) {
+            visits = 1;
+        } else {
+            visits = parseInt(visits) + 1;
+        }
+        localStorage.setItem('blogVisits', visits);
+        visitorCount.textContent = visits;
+        
+        // Счетчик страниц (просто для вида)
+        let pageViews = localStorage.getItem('blogPageViews');
+        if (!pageViews) {
+            pageViews = 1;
+        } else {
+            pageViews = parseInt(pageViews) + 1;
+        }
+        localStorage.setItem('blogPageViews', pageViews);
+        pageCounter.textContent = String(pageViews).padStart(6, '0');
+        
+        // Массив для хранения постов
+        let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+        
+        // Обработка отправки формы
+        postForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получение данных из формы
+            const title = postTitle.value;
+            const text = postText.value;
+            const imageUrl = postImage.value;
+            
+            // Проверка заполнения обязательных полей
+            if (!title || !text) {
+                alert('Пожалуйста, заполните заголовок и текст поста!');
+                return;
+            }
+            
+            // Создание нового поста
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                text: text,
+                image: imageUrl,
+                date: new Date().toLocaleDateString('ru-RU')
+            };
+            
+            savePost(newPost);
+        });
+        
+        // Сохранение поста
+        function savePost(post) {
+            posts.unshift(post);
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            renderPosts();
+            resetForm();
+        }
+        
+        // Отрисовка постов
+        function renderPosts() {
+            if (posts.length === 0) {
+                postsContainer.innerHTML = '<p>Пока нет постов. Будьте первым, кто добавит пост!</p>';
+                return;
+            }
+            
+            postsContainer.innerHTML = '';
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <button class="delete-btn" data-id="${post.id}">X</button>
+                    <h3 class="post-title">${post.title}</h3>
+                    <div class="post-content">${post.text}</div>
+                    ${post.image ? `<img src="${post.image}" class="post-image" alt="${post.title}">` : ''}
+                    <div class="post-date">Опубликовано: ${post.date}</div>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+            
+            // Добавляем обработчики для кнопок удаления
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const postId = parseInt(this.getAttribute('data-id'));
+                    deletePost(postId);
+                });
+            });
+        }
+        
+        // Удаление поста
+        function deletePost(id) {
+            if (confirm('Вы уверены, что хотите удалить этот пост?')) {
+                posts = posts.filter(post => post.id !== id);
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                renderPosts();
+            }
+        }
+        
+        // Сброс формы
+        function resetForm() {
+            postForm.reset();
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPosts();
+        });
+    </script>
+</body>
+</html>
